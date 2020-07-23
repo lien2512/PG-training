@@ -20,11 +20,28 @@ export class LoginService {
   doSignUp(user: any) {
     localStorage.setItem('password', user.password);
     localStorage.setItem('username', user.username);
+
+    if (localStorage.getItem('user')) {
+      var username = JSON.parse(localStorage.getItem('user'));
+      let b = username.findIndex(function(item) {
+        return item === user.username + '-' + user.password;
+      });
+      if (b > -1) {
+        alert("Tài khoản đã được đăng ký");
+      }
+      username.push(user.username + '-' + user.password);
+      localStorage.setItem('user', JSON.stringify(username));
+    } else {
+      var usern = [];
+      usern.push(user.username + '-' + user.password);
+      localStorage.setItem('user', JSON.stringify(usern));
+    }
   }
   checkLogin(user) {
-    return (
-      user.username === localStorage.getItem('username') &&
-      user.password === localStorage.getItem('password')
+    var usernam = JSON.parse(localStorage.getItem('user'));
+    return ( usernam.findIndex(function(item) {
+      return item === user.username + '-' + user.password;
+    }) > -1
     );
   }
   // hàm đăng nhập
@@ -73,7 +90,7 @@ export class LoginService {
         this.isLogin = false;
         this.loginUser$.next(null);
       } else {
-        alert("Bạn chưa đăng nhập");
+        alert('Bạn chưa đăng nhập');
       }
     } else {
       alert('Bạn chưa đăng ký');

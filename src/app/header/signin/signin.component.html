@@ -1,0 +1,33 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">Đăng nhập</h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="formControl">
+    <div class="form-group">
+      <label for="exampleInput">Username</label>
+      <input class="form-control" id="exampleInpu1" formControlName="username" [(ngModel)]="model.username">
+      <div *ngIf="getInputUsernamel.hasError('required')" class="text-danger">Trường Username bắt buộc nhập
+      </div>
+      <div *ngIf="getInputUsernamel.hasError('minlength')" class="text-danger">Nhập tối thiểu 6 kí tự
+      </div>
+
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" formControlName="pass"
+        [(ngModel)]="model.password">
+      <div *ngIf="getInputPass.hasError('required')" class="text-danger">Trường Password bắt buộc nhập
+      </div>
+      <div *ngIf="getInputPass.hasError('minlength')" class="text-danger">Nhập tối thiểu 6 kí tự
+      </div>
+    </div>
+  </form>
+  <span>Nếu bạn chưa có tài khoản, hãy <a href="#" (click)="navigateSignUp()">Đăng
+      ký</a></span>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-danger" (click)="doLogin()">Đăng nhập</button>
+</div>

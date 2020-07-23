@@ -1,0 +1,21 @@
+<div class="card">
+    <div class="row">
+        <div class="col-sm-6" >
+            <div class="row" *ngIf="!avatar">
+                <div class="col-sm-6">
+                    <button type="button" class="btn btn-primary" (click)="openModalSignUp()" >Đăng kí</button>
+                </div>
+                <div class="col-sm-6">
+                    <button type="button" class="btn btn-secondary" (click)="openModalSignIn()">Đăng nhập</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <button type="button" class="btn btn-secondary" *ngIf="avatar">{{avatar}}</button>
+        </div>
+        <div class="col-sm-3">
+            <button type="button" class="btn btn-success logout" (click)="logout()">Đăng xuất</button>
+
+        </div>
+    </div>
+</div>

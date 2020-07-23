@@ -52,7 +52,7 @@ export class SignupComponent implements OnInit {
         username: this.model.username
       }
       this.loginservice.doSignUp(obj);
-      alert("Đăng ký thành công");
+      // alert("Đăng ký thành công");
       this.bsModalRef = this.modalService.show(SigninComponent);
       this.bsModalRef.content.closeBtnName = 'Close';
     } else {
